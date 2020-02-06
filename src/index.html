@@ -7,7 +7,8 @@
 
   <base href="/" />
 
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
 
@@ -16,10 +17,43 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
 </head>
 
 <body>
   <app-root></app-root>
+  <script>
+    var spread_shop_config = {
+      shopName: 'santa-tracker-online-store',
+      locale: 'us_US',
+      prefix: 'https://shop.spreadshirt.com',
+      baseId: 'myShop'
+    };
+  </script>
+  <!-- <script type="text/javascript" src="https://shop.spreadshirt.com/shopfiles/shopclient/shopclient.nocache.js"></script> -->
+  <script type="text/javascript" src="assets/plugins.min.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDvMAiFxwQ7V_fkXijJBAV9rjzVvJIy5eY",
+    authDomain: "santa-tracker-e05d3.firebaseapp.com",
+    databaseURL: "https://santa-tracker-e05d3.firebaseio.com",
+    projectId: "santa-tracker-e05d3",
+    storageBucket: "santa-tracker-e05d3.appspot.com",
+    messagingSenderId: "543289177219",
+    appId: "1:543289177219:web:dd29ac846dc47c03cc97b6",
+    measurementId: "G-LRGLJQC16K"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script> -->
 </body>
 
 </html>

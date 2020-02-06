@@ -1,0 +1,27 @@
+ion-tab-button {
+  --color-selected: var(--ion-color-red);
+  ion-label {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+.custom-spinner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+}
+
+:host ::ng-deep ._2p3a {
+  min-width: 100% !important;
+  width: 100% !important;
+}
+
+:host ::ng-deep ._10b4,
+:host ::ng-deep ._2lqg {
+  max-height: 77vh !important;
+}

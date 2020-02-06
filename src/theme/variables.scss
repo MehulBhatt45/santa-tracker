@@ -74,4 +74,43 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** red **/
+  --ion-color-red: #b32d38;
+  --ion-color-red-rgb: 179, 45, 56;
+  --ion-color-red-contrast: #ffffff;
+  --ion-color-red-contrast-rgb: 255, 255, 255;
+  --ion-color-red-shade: #af3c46;
+  --ion-color-red-tint: #dd5353;
+
+   /** green **/
+   --ion-color-green: #1d781d;
+   --ion-color-green-rgb: 29, 120, 29;
+   --ion-color-green-contrast: #ffffff;
+   --ion-color-green-contrast-rgb: 255, 255, 255;
+   --ion-color-green-shade: #135013;
+   --ion-color-green-tint: #27a127;
 }
+
+.ion-color-red {
+  --ion-color-base: var(--ion-color-red) !important;
+  --ion-color-base-rgb: var(--ion-color-red-rgb) !important;
+  --ion-color-contrast: var(--ion-color-red-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-red-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-red-shade) !important;
+  --ion-color-tint: var(--ion-color-red-tint) !important;
+}
+
+.ion-color-green {
+  --ion-color-base: var(--ion-color-green) !important;
+  --ion-color-base-rgb: var(--ion-color-green-rgb) !important;
+  --ion-color-contrast: var(--ion-color-green-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-green-shade) !important;
+  --ion-color-tint: var(--ion-color-green-tint) !important;
+}
+
+:host ::ng-deep ion-spinner.spinner-bubbles.sc-ion-loading-md {
+  color: #b32d38cc !important;
+}
+

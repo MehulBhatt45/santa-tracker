@@ -1,0 +1,22 @@
+:host ::ng-deep nav.sprd-burgermenu {
+  margin-top: 56px !important;
+}
+
+.loader {
+  --spinner-color: #b32d38cc !important;
+}
+
+.custom-spinner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+}
+
+:host ::ng-deep ion-spinner.spinner-bubbles.sc-ion-loading-md {
+  color: #b32d38cc !important;
+  --spinner-color: #b32d38cc !important;
+}

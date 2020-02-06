@@ -1,5 +1,7 @@
 {
   "name": "santa-tracker",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
