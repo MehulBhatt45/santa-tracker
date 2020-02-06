@@ -12,11 +12,18 @@ export class ShopPage implements OnInit {
   loaded = true;
   constructor(private loadingCtrl: LoadingController, private mobileAccessibility: MobileAccessibility) {}
 
-  async ngOnInit() {
+  ngOnInit() {
+
+  }
+  
+  async ionViewDidLoad() {
     loadjs('https://shop.spreadshirt.com/shopfiles/shopclient/shopclient.nocache.js', () => {
       this.loaded = false;
       this.mobileAccessibility.isScreenReaderRunning().then(() => {
-        this.mobileAccessibility.speak("This is demo speech for usage of mobileaccessability");
+        console.log('this.mobileAccessibility.isScreenReaderRunning() true');
+        this.mobileAccessibility.speak("This is demo speech for usage of mobile accessability");
+      }).catch(err => {
+        console.log(err);
       })
     });
   }
