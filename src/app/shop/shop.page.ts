@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import loadjs from 'loadjs';
 import { LoadingController } from '@ionic/angular';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 @Component({
   selector: 'app-shop',
@@ -9,23 +10,14 @@ import { LoadingController } from '@ionic/angular';
 })
 export class ShopPage implements OnInit {
   loaded = true;
-  constructor(private loadingCtrl: LoadingController) {}
+  constructor(private loadingCtrl: LoadingController, private mobileAccessibility: MobileAccessibility) {}
 
   async ngOnInit() {
-    // const loading = await this.loadingCtrl.create({
-    //   spinner: 'bubbles',
-    //   showBackdrop: true,
-    //   message: 'Please wait...',
-    //   cssClass: 'loader'
-    // });
-    // await loading.present();
-    // const script = document.createElement('script');
-    // script.id = 'spreadshirt';
-    // script.type = 'text/javascrpt';
-    // script.src = 'https://shop.spreadshirt.com/shopfiles/shopclient/shopclient.nocache.js';
-    // document.appendChild(script);
     loadjs('https://shop.spreadshirt.com/shopfiles/shopclient/shopclient.nocache.js', () => {
       this.loaded = false;
+      this.mobileAccessibility.isScreenReaderRunning().then(() => {
+        this.mobileAccessibility.speak("This is demo speech for usage of mobileaccessability");
+      })
     });
   }
 

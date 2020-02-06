@@ -5,11 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { HTTP } from '@ionic-native/http/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,8 @@ import { FCM } from '@ionic-native/fcm/ngx';
     StatusBar,
     SplashScreen,
     FCM,
+    HTTP,
+    MobileAccessibility,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
