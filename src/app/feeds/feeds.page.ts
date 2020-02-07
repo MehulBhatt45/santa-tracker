@@ -64,10 +64,11 @@ export class FeedsPage implements OnInit {
   }
 
   getYouTubeVideos() {
+    // tslint:disable-next-line: max-line-length
     this.http.get(`https://www.googleapis.com/youtube/v3/search?key=${environment.googleApi}&channelId=${this.ytChannelId}&order=date&part=snippet&type=video&maxResults=${50}`, {}, {}).then(res => {
-    const data = res.data;
-    console.log(data);
-    return JSON.parse(data);
+      const data = res.data;
+      console.log(data);
+      return JSON.parse(data);
     }).then((lista: any) => {
       console.log(lista);
       this.videos = lista.items;
@@ -76,8 +77,8 @@ export class FeedsPage implements OnInit {
       //   this.videos.push(element);
       // }
     }).catch(err => {
-      console.log(err)     
-    })
+      console.log(err);
+    });
     // this.ytService.getVideosForChanel(this.ytChannelId, 50)
     // .subscribe((lista: any) => {
     //     if(lista && lista.items){

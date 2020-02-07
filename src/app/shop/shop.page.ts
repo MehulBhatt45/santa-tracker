@@ -10,21 +10,18 @@ import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 })
 export class ShopPage implements OnInit {
   loaded = true;
-  constructor(private loadingCtrl: LoadingController, private mobileAccessibility: MobileAccessibility) {}
+  constructor(private loadingCtrl: LoadingController, private mobileAccessibility: MobileAccessibility) { }
 
   ngOnInit() {
-
-  }
-  
-  async ionViewDidLoad() {
     loadjs('https://shop.spreadshirt.com/shopfiles/shopclient/shopclient.nocache.js', () => {
       this.loaded = false;
       this.mobileAccessibility.isScreenReaderRunning().then(() => {
         console.log('this.mobileAccessibility.isScreenReaderRunning() true');
-        this.mobileAccessibility.speak("This is demo speech for usage of mobile accessability");
+        this.mobileAccessibility.speak('This is demo speech for usage of mobile accessability');
+        this.mobileAccessibility.setTextZoom(100);
       }).catch(err => {
         console.log(err);
-      })
+      });
     });
   }
 

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
     FCM,
     HTTP,
     MobileAccessibility,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -12,14 +12,14 @@ export class YoutubeService {
   constructor(public http: HttpClient) { }
 
   getVideosForChanel(channel, maxResults) {
-    const option = {headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-      'Accept': 'application/json',
-      'content-type': 'application/json'
-    })}
+    // const option = {headers: new HttpHeaders({
+    //   'Access-Control-Allow-Origin': '*',
+    //   'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+    //   'Accept': 'application/json',
+    //   'content-type': 'application/json'
+    // })}
     // tslint:disable-next-line: max-line-length
-    const url = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}&channelId=${channel}&order=date&part=snippet&type=video&maxResults=${maxResults}`;
-    return this.http.get(url, option);
+    // const url = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}&channelId=${channel}&order=date&part=snippet&type=video&maxResults=${maxResults}`;
+    // return this.http.get(url, option);
   }
 }
