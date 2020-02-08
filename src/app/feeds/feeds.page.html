@@ -8,6 +8,9 @@
     <ion-segment-button checked value="facebook">
       <ion-icon name="logo-facebook"></ion-icon>
     </ion-segment-button>
+    <ion-segment-button value="instagram">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </ion-segment-button>
     <ion-segment-button value="twitter">
       <ion-icon name="logo-twitter"></ion-icon>
     </ion-segment-button>
@@ -26,13 +29,24 @@
     <ion-tabs class="twitter-tabs" *ngIf="current === 'twitter'">
       <ion-tab-bar slot="top">
         <ion-tab-button class="officialSTteam tab-selected" (click)="changeTwit('officialSTteam')">
-          <ion-label class="font-weight-bold">#officialSTteam</ion-label>
+          <ion-label class="font-weight-bold">@officialSTteam</ion-label>
         </ion-tab-button>
         <ion-tab-button class="officialSTstore" (click)="changeTwit('officialSTstore')">
-          <ion-label class="font-weight-bold">#officialSTstore</ion-label>
+          <ion-label class="font-weight-bold">@officialSTstore</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
+
+    <!-- <ion-tabs class="twitter-tabs" *ngIf="current === 'instagram'">
+      <ion-tab-bar slot="top">
+        <ion-tab-button class="officialSTteam tab-selected" (click)="changeTwit('officialSTteam')">
+          <ion-label class="font-weight-bold">@officialSTteam</ion-label>
+        </ion-tab-button>
+        <ion-tab-button class="officialSTstore" (click)="changeTwit('officialSTstore')">
+          <ion-label class="font-weight-bold">@officialSTstore</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs> -->
     <ngx-twitter-timeline *ngIf="current === 'twitter' && currentTwit === 'officialSTstore'"
       style="width: 100%; margin-top: 50px;" [data]="{sourceType: 'url', url: 'https://twitter.com/officialSTstore'}"
       [opts]="{tweetLimit: 50}">
@@ -43,28 +57,40 @@
       [opts]="{tweetLimit: 50}">
     </ngx-twitter-timeline>
 
+    <!-- <ngx-insta *ngIf="current === 'instagram'" [config]="config"></ngx-insta> -->
+
+    <div *ngIf="current === 'instagram'">
+      <ion-spinner class="custom-spinner" *ngIf="instaFeeds && instaFeeds.length <= 0" color="red" name="crescent">
+      </ion-spinner>
+      <span *ngIf="instaFeeds && instaFeeds.length > 0">
+        <iframe *ngFor="let instaFeed of instaFeeds" width="100%" height="575" [src]="getUrl(instaFeed.link)"
+          frameborder="0"></iframe>
+      </span>
+    </div>
+
     <!-- <iframe *ngIf="current === 'instagram'" width="100%" height="550"
       src="https://www.instagram.com/p/B8IjRLgJqbJ/embed" frameborder="0"></iframe> -->
 
     <div *ngIf="current === 'youtube'">
-      <ion-spinner class="custom-spinner" *ngIf="videos && videos.length <= 0" color="red" name="crescent"></ion-spinner>
+      <ion-spinner class="custom-spinner" *ngIf="videos && videos.length <= 0" color="red" name="crescent">
+      </ion-spinner>
       <span *ngIf="videos && videos.length > 0">
         <ion-card *ngFor="let video of videos">
           <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
             <img [src]="video.snippet.thumbnails.medium.url" class="card-img-top" alt="..."></a>
-            <ion-card-header>
-              <ion-card-title>
-                <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">
-                  {{video.snippet.title}}
-                </a>
-              </ion-card-title>
-              <ion-card-subtitle>{{video.snippet.channelTitle}}</ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>
-              {{video.snippet.description.slice(0, 100)}}
-            </ion-card-content>
-          </ion-card>
-        </span>
+          <ion-card-header>
+            <ion-card-title>
+              <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">
+                {{video.snippet.title}}
+              </a>
+            </ion-card-title>
+            <ion-card-subtitle>{{video.snippet.channelTitle}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{video.snippet.description.slice(0, 100)}}
+          </ion-card-content>
+        </ion-card>
+      </span>
     </div>
 
     <!-- <div *ngIf="current === 'youtube'" class="elfsight-app-1907da1e-b2e2-4a69-b831-63b5182a63fd"></div> -->

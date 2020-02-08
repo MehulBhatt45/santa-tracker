@@ -28,6 +28,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'about',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../about/about.module').then(m => m.AboutPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/shop',
         pathMatch: 'full'
@@ -45,4 +55,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

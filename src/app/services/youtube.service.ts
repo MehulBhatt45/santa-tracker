@@ -11,7 +11,7 @@ export class YoutubeService {
 
   constructor(public http: HttpClient) { }
 
-  getVideosForChanel(channel, maxResults) {
+  getVideosForChanel(url) {
     // const option = {headers: new HttpHeaders({
     //   'Access-Control-Allow-Origin': '*',
     //   'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
@@ -20,6 +20,6 @@ export class YoutubeService {
     // })}
     // tslint:disable-next-line: max-line-length
     // const url = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}&channelId=${channel}&order=date&part=snippet&type=video&maxResults=${maxResults}`;
-    // return this.http.get(url, option);
+    return this.http.get(url);
   }
 }
