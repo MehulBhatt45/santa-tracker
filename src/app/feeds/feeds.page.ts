@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 declare const $: any;
 
 @Component({
@@ -16,9 +17,18 @@ export class FeedsPage implements OnInit {
   current = 'facebook';
   currentTwit = 'officialSTteam';
   ytChannelId = 'UCS7ZMbLW5Tz3nNSEzRmf9CA';
+  instId = environment.officialsantatrackerteamId;
+  instaToken = environment.officialsantatrackerteamToken;
+  config: any = {
+    count: 1000, // any int value
+    idUser: this.instId,
+    tokenUser: this.instaToken,
+    grid: false // false is list true is grid
+  };
   private unsubscribe$: Subject<any> = new Subject();
   videos = [];
-  constructor(private ytService: YoutubeService, private change: ChangeDetectorRef, private http: HTTP) {
+  instaFeeds = [];
+  constructor(private ytService: YoutubeService, private change: ChangeDetectorRef, private http: HTTP, private senitizer: DomSanitizer) {
     // loadjs('https://apps.elfsight.com/p/platform.js');
   }
 
@@ -28,6 +38,9 @@ export class FeedsPage implements OnInit {
     this.change.detectChanges();
     if (this.current === 'youtube') {
       this.getYouTubeVideos();
+    }
+    if (this.current === 'instagram') {
+      this.getInstaFeeds();
     }
   }
 
@@ -73,25 +86,40 @@ export class FeedsPage implements OnInit {
       console.log(lista);
       this.videos = lista.items;
       this.change.detectChanges();
-      // for (const element of lista.items) {
-      //   this.videos.push(element);
-      // }
     }).catch(err => {
       console.log(err);
     });
-    // this.ytService.getVideosForChanel(this.ytChannelId, 50)
-    // .subscribe((lista: any) => {
-    //     if(lista && lista.items){
-    //       for (const element of lista.items) {
-    //         this.videos.push(element);
-    //       }
-    //     }else{
-    //       console.log(lista);
-    //     }
 
-    //   }, err => {
-    //     console.error(err)
-    //   });
+    // tslint:disable-next-line: max-line-length
+    // this.ytService.getVideosForChanel(`https://www.googleapis.com/youtube/v3/search?key=${environment.googleApi}&channelId=${this.ytChannelId}&order=date&part=snippet&type=video&maxResults=${50}`).subscribe((res: any) => {
+    //   console.log(res);
+    //   this.instaFeeds = res.data;
+    // }, err => {
+    //   console.log(err);
+    // });
+  }
+
+  getInstaFeeds() {
+    // tslint:disable-next-line: max-line-length
+    this.http.get(`https://api.instagram.com/v1/users/${this.config.idUser}/media/recent/?count=${this.config.count}&access_token=${this.config.tokenUser}`, {}, {}).then(res => {
+      const data = res.data;
+      console.log(data);
+      return JSON.parse(data);
+    }).then((lista: any) => {
+      console.log(lista);
+      this.instaFeeds = lista.data;
+      this.change.detectChanges();
+    }).catch(err => {
+      console.log(err);
+    });
+
+    // tslint:disable-next-line: max-line-length
+    // this.ytService.getVideosForChanel(`https://api.instagram.com/v1/users/${this.config.idUser}/media/recent/?count=${this.config.count}&access_token=${this.config.tokenUser}`).subscribe((res: any) => {
+    //   console.log(res);
+    //   this.instaFeeds = res.data;
+    // }, err => {
+    //   console.log(err);
+    // });
   }
 
   ionViewWillLeave() { this.removeScript(); }
@@ -106,6 +134,11 @@ export class FeedsPage implements OnInit {
       $('.officialSTstore').addClass('tab-selected');
       $('.officialSTteam').removeClass('tab-selected');
     }
+  }
+
+  getUrl(link) {
+    console.log(link);
+    return this.senitizer.bypassSecurityTrustResourceUrl(link + 'embed');
   }
 
 }

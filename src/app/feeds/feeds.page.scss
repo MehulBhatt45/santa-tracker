@@ -21,7 +21,8 @@ ion-tab-button {
   width: 100% !important;
 }
 
-:host ::ng-deep ._10b4,
-:host ::ng-deep ._2lqg {
-  max-height: 77vh !important;
+:host ::ng-deep ngx-insta ul.list, 
+:host ::ng-deep ngx-insta ul.grid {
+  width: 100% !important;
+  padding: 0 !important;
 }

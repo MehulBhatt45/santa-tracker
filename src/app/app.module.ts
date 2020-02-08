@@ -12,6 +12,7 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { NgxInstaModule } from 'ngx-insta';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     NgxTwitterTimelineModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxInstaModule
   ],
   providers: [
     StatusBar,
