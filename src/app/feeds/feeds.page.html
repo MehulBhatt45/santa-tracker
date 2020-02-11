@@ -49,12 +49,12 @@
     </ion-tabs> -->
     <ngx-twitter-timeline *ngIf="current === 'twitter' && currentTwit === 'officialSTstore'"
       style="width: 100%; margin-top: 50px;" [data]="{sourceType: 'url', url: 'https://twitter.com/officialSTstore'}"
-      [opts]="{tweetLimit: 50}">
+      [opts]="{tweetLimit: 100}">
     </ngx-twitter-timeline>
 
     <ngx-twitter-timeline *ngIf="current === 'twitter' && currentTwit === 'officialSTteam'"
       style="width: 100%; margin-top: 50px;" [data]="{sourceType: 'url', url: 'https://twitter.com/officialSTteam'}"
-      [opts]="{tweetLimit: 50}">
+      [opts]="{tweetLimit: 100}">
     </ngx-twitter-timeline>
 
     <!-- <ngx-insta *ngIf="current === 'instagram'" [config]="config"></ngx-insta> -->
@@ -63,7 +63,7 @@
       <ion-spinner class="custom-spinner" *ngIf="instaFeeds && instaFeeds.length <= 0" color="red" name="crescent">
       </ion-spinner>
       <span *ngIf="instaFeeds && instaFeeds.length > 0">
-        <iframe *ngFor="let instaFeed of instaFeeds" width="100%" height="575" [src]="getUrl(instaFeed.link)"
+        <iframe *ngFor="let instaFeed of instaFeeds"  id="{{instaFeed.id}}" width="100%" height="575" [src]="getUrl(instaFeed.link)"
           frameborder="0"></iframe>
       </span>
     </div>

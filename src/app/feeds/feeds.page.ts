@@ -80,10 +80,8 @@ export class FeedsPage implements OnInit {
     // tslint:disable-next-line: max-line-length
     this.http.get(`https://www.googleapis.com/youtube/v3/search?key=${environment.googleApi}&channelId=${this.ytChannelId}&order=date&part=snippet&type=video&maxResults=${50}`, {}, {}).then(res => {
       const data = res.data;
-      console.log(data);
       return JSON.parse(data);
     }).then((lista: any) => {
-      console.log(lista);
       this.videos = lista.items;
       this.change.detectChanges();
     }).catch(err => {
@@ -92,7 +90,6 @@ export class FeedsPage implements OnInit {
 
     // tslint:disable-next-line: max-line-length
     // this.ytService.getVideosForChanel(`https://www.googleapis.com/youtube/v3/search?key=${environment.googleApi}&channelId=${this.ytChannelId}&order=date&part=snippet&type=video&maxResults=${50}`).subscribe((res: any) => {
-    //   console.log(res);
     //   this.instaFeeds = res.data;
     // }, err => {
     //   console.log(err);
@@ -103,10 +100,8 @@ export class FeedsPage implements OnInit {
     // tslint:disable-next-line: max-line-length
     this.http.get(`https://api.instagram.com/v1/users/${this.config.idUser}/media/recent/?count=${this.config.count}&access_token=${this.config.tokenUser}`, {}, {}).then(res => {
       const data = res.data;
-      console.log(data);
       return JSON.parse(data);
     }).then((lista: any) => {
-      console.log(lista);
       this.instaFeeds = lista.data;
       this.change.detectChanges();
     }).catch(err => {
@@ -115,7 +110,7 @@ export class FeedsPage implements OnInit {
 
     // tslint:disable-next-line: max-line-length
     // this.ytService.getVideosForChanel(`https://api.instagram.com/v1/users/${this.config.idUser}/media/recent/?count=${this.config.count}&access_token=${this.config.tokenUser}`).subscribe((res: any) => {
-    //   console.log(res);
+    //   console.log(res.data);
     //   this.instaFeeds = res.data;
     // }, err => {
     //   console.log(err);
@@ -137,7 +132,6 @@ export class FeedsPage implements OnInit {
   }
 
   getUrl(link) {
-    console.log(link);
     return this.senitizer.bypassSecurityTrustResourceUrl(link + 'embed');
   }
 
