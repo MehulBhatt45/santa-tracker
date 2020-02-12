@@ -23,8 +23,8 @@
 <ion-content>
   <div style="width: 100%; height: auto; display: flex; justify-content: center; align-content: center;">
     <iframe *ngIf="current === 'facebook'"
-      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fofficialsantatrackerteam&tabs=timeline%2C%20events&width=350&height=575&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1977606375586139"
-      width="350" height="565" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fofficialsantatrackerteam&tabs=timeline%2C%20events&width=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1977606375586139"
+      width="350" height="{{height}}" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
       allowTransparency="true" allow="encrypted-media"></iframe>
     <ion-tabs class="twitter-tabs" *ngIf="current === 'twitter'">
       <ion-tab-bar slot="top">
@@ -63,7 +63,7 @@
       <ion-spinner class="custom-spinner" *ngIf="instaFeeds && instaFeeds.length <= 0" color="red" name="crescent">
       </ion-spinner>
       <span *ngIf="instaFeeds && instaFeeds.length > 0">
-        <iframe *ngFor="let instaFeed of instaFeeds"  id="{{instaFeed.id}}" width="100%" height="575" [src]="getUrl(instaFeed.link)"
+        <iframe *ngFor="let instaFeed of instaFeeds"  id="{{instaFeed.id}}" width="{{width}}" height="{{height}}" [src]="getUrl(instaFeed.link)"
           frameborder="0"></iframe>
       </span>
     </div>
