@@ -12,14 +12,16 @@ export class YoutubeService {
   constructor(public http: HttpClient) { }
 
   getVideosForChanel(url) {
-    // const option = {headers: new HttpHeaders({
-    //   'Access-Control-Allow-Origin': '*',
-    //   'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-    //   'Accept': 'application/json',
-    //   'content-type': 'application/json'
-    // })}
+    const option = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+        'content-type': 'application/json',
+        Authorization: `Bearer ${environment.ticketSourceToken}`
+      })
+    };
     // tslint:disable-next-line: max-line-length
     // const url = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}&channelId=${channel}&order=date&part=snippet&type=video&maxResults=${maxResults}`;
-    return this.http.get(url);
+    return this.http.get(url, option);
   }
 }
