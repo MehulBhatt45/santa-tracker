@@ -14,7 +14,8 @@ export const environment = {
   storageBucket: 'santa-tracker-e05d3.appspot.com',
   messagingSenderId: '543289177219',
   appId: '1:543289177219:web:dd29ac846dc47c03cc97b6',
-  measurementId: 'G-LRGLJQC16K'
+  measurementId: 'G-LRGLJQC16K',
+  ticketSourceToken: 'skl-1ZwUh1S7CJvnMyGkvY2NowLSUDxkg1nDQdGwG1bBK62YGblBtb4zlLTEQgzN'
 };
 
 /*

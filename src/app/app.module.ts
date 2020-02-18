@@ -13,9 +13,11 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { NgxInstaModule } from 'ngx-insta';
+import { DatePipe } from '@angular/common';
+import { TruncatePipe } from './services/truncate.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TruncatePipe],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -26,12 +28,14 @@ import { NgxInstaModule } from 'ngx-insta';
     NgxInstaModule
   ],
   providers: [
+    DatePipe,
     StatusBar,
     SplashScreen,
     FCM,
     HTTP,
     MobileAccessibility,
     InAppBrowser,
+    TruncatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
