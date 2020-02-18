@@ -6,6 +6,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Platform } from '@ionic/angular';
 declare const $: any;
 
 @Component({
@@ -28,7 +29,9 @@ export class FeedsPage implements OnInit {
   private unsubscribe$: Subject<any> = new Subject();
   videos = [];
   instaFeeds = [];
-  constructor(private ytService: YoutubeService, private change: ChangeDetectorRef, private http: HTTP, private senitizer: DomSanitizer) {
+  height = this.platform.height();
+  width = this.platform.width();
+  constructor(private ytService: YoutubeService, private change: ChangeDetectorRef, private http: HTTP, private senitizer: DomSanitizer, public platform: Platform) {
     // loadjs('https://apps.elfsight.com/p/platform.js');
   }
 
@@ -122,6 +125,7 @@ export class FeedsPage implements OnInit {
   changeTwit(twit) {
     console.log(twit);
     this.currentTwit = twit;
+    this.change.detectChanges();
     if (this.currentTwit === 'officialSTteam') {
       $('.officialSTteam').addClass('tab-selected');
       $('.officialSTstore').removeClass('tab-selected');
