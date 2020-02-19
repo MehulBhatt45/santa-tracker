@@ -5,10 +5,10 @@
     </ion-title>
   </ion-toolbar>
   <ion-segment style="background: #fff;" color="red" (ionChange)="segmentChanged($event)">
-    <ion-segment-button checked value="facebook">
+    <!-- <ion-segment-button checked value="facebook">
       <ion-icon name="logo-facebook"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button value="instagram">
+    </ion-segment-button> -->
+    <ion-segment-button checked value="instagram">
       <ion-icon name="logo-instagram"></ion-icon>
     </ion-segment-button>
     <ion-segment-button value="twitter">
@@ -22,10 +22,10 @@
 
 <ion-content>
   <div style="width: 100%; height: auto; display: flex; justify-content: center; align-content: center;">
-    <iframe *ngIf="current === 'facebook'"
+    <!-- <iframe *ngIf="current === 'facebook'"
       src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fofficialsantatrackerteam&tabs=timeline%2C%20events&width=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1977606375586139"
       width="350" height="{{height}}" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-      allowTransparency="true" allow="encrypted-media"></iframe>
+      allowTransparency="true" allow="encrypted-media"></iframe> -->
     <ion-tabs class="twitter-tabs" *ngIf="current === 'twitter'">
       <ion-tab-bar slot="top">
         <ion-tab-button class="officialSTteam tab-selected" (click)="changeTwit('officialSTteam')">
