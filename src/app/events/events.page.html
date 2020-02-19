@@ -8,47 +8,51 @@
   <ion-spinner class="custom-spinner" *ngIf="allEvents && allEvents.length <= 0" color="red" name="crescent">
   </ion-spinner>
   <span *ngIf="allEvents && allEvents.length > 0">
-    <flash-card *ngFor="let event of allEvents">
-      <div class="flash-card-front">
-        <ion-card>
-          <img [src]="event.attributes.images[1].src" class="card-img-top" alt="...">
-          <ion-card-header>
-            <ion-card-title>
-              <a href="javascript:void(0)">
-                <ion-text color="green">{{event.attributes.name}}</ion-text>
-              </a>
-            </ion-card-title>
-            <ion-card-subtitle>{{event.venue.name}}</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            <p class="mb-2" [innerHtml]="getSlicedContent(event.attributes.description)"></p>
-            <div class="row">
-              <div class="col-2"><strong><i class="fas fa-map-marker-alt"></i> </strong></div>
-              <div class="col-10">{{event.venue.address.line_1}}, {{event.venue.address.line_2}},
-                {{event.venue.address.line_3}}, {{event.venue.address.line_4}}, {{event.venue.address.postcode}}</div>
-            </div>
-            <div class="row">
-              <div class="col-2"><strong><i class="fas fa-calendar-day"></i> </strong></div>
-              <div class="col-10">{{event.dates.doors_open | date: 'longDate'}}</div>
-            </div>
-            <div class="row">
-              <div class="col-2"><strong><i class="fas fa-clock"></i> </strong></div>
-              <div class="col-10">{{getTime(event.dates.start)}} to {{getTime(event.dates.end)}}</div>
-            </div>
-            <!-- <div class="row justify-content-center">
-            </div> -->
-          </ion-card-content>
-        </ion-card>
-        <ion-button style="z-index: 10" class="px-2" expand="block" fill="outline" color="red" (click)="bookNow(event.book_now)">Book</ion-button>
+    <div class="flip-container" id="{{event.id}}" *ngFor="let event of allEvents">
+      <div class="flipper">
+        <div class="front">
+          <ion-card>
+            <img [src]="event.attributes.images[1].src" class="card-img-top" alt="...">
+            <ion-card-header>
+              <ion-card-title>
+                <a href="javascript:void(0)">
+                  <ion-text color="green">{{event.attributes.name}}</ion-text>
+                </a>
+              </ion-card-title>
+              <ion-card-subtitle>{{event.venue.name}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content (click)="flip(event.id)">
+              <p class="mb-2" [innerHtml]="getSlicedContent(event.attributes.description)"></p>
+              <div class="row">
+                <div class="col-2"><strong><i class="fas fa-map-marker-alt"></i> </strong></div>
+                <div class="col-10">{{event.venue.address.line_1}}, {{event.venue.address.line_2}},
+                  {{event.venue.address.line_3}}, {{event.venue.address.line_4}}, {{event.venue.address.postcode}}</div>
+              </div>
+              <div class="row">
+                <div class="col-2"><strong><i class="fas fa-calendar-day"></i> </strong></div>
+                <div class="col-10">{{event.dates.doors_open | date: 'longDate'}}</div>
+              </div>
+              <div class="row">
+                <div class="col-2"><strong><i class="fas fa-clock"></i> </strong></div>
+                <div class="col-10">{{getTime(event.dates.start)}} to {{getTime(event.dates.end)}}</div>
+              </div>
+              <!-- <div class="row justify-content-center">
+              </div> -->
+            </ion-card-content>
+            <ion-button style="z-index: 10" class="px-2" expand="block" fill="outline" color="red"
+              (click)="bookNow(event.book_now)">Book</ion-button>
+          </ion-card>
+        </div>
+        <div class="back">
+          <ion-card>
+            <ion-card-content (click)="flip(event.id)">
+              <p class="mb-2">{{event.attributes.description}}</p>
+            </ion-card-content>
+            <ion-button style="z-index: 10" class="px-2" expand="block" fill="outline" color="red"
+              (click)="bookNow(event.book_now)">Book</ion-button>
+          </ion-card>
+        </div>
       </div>
-      <div class="flash-card-back">
-        <ion-card>
-          <ion-card-content>
-            <p class="mb-2">{{event.attributes.description}}</p>
-          </ion-card-content>
-        </ion-card>
-        <ion-button style="z-index: 10" class="px-2" expand="block" fill="outline" color="red" (click)="bookNow(event.book_now)">Book</ion-button>
-      </div>
-    </flash-card>
+    </div>
   </span>
 </ion-content>
