@@ -6,7 +6,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { DatePipe } from '@angular/common';
 import { TruncatePipe } from '../services/truncate.pipe';
 import { DomSanitizer } from '@angular/platform-browser';
-
+declare const $: any;
 @Component({
   selector: 'app-events',
   templateUrl: './events.page.html',
@@ -89,6 +89,10 @@ export class EventsPage implements OnInit {
   moreDetails(event) {
     alert('Clicked');
     console.log(event);
+  }
+
+  flip(id) {
+    $(`#${id}`).toggleClass('flipped');
   }
 
 }
