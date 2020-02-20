@@ -15,7 +15,7 @@ declare const $: any;
   styleUrls: ['feeds.page.scss']
 })
 export class FeedsPage implements OnInit {
-  current = 'facebook';
+  current = 'instagram';
   currentTwit = 'officialSTteam';
   ytChannelId = 'UCS7ZMbLW5Tz3nNSEzRmf9CA';
   instId = environment.officialsantatrackerteamId;
@@ -31,7 +31,9 @@ export class FeedsPage implements OnInit {
   instaFeeds = [];
   height = this.platform.height();
   width = this.platform.width();
-  constructor(private ytService: YoutubeService, private change: ChangeDetectorRef, private http: HTTP, private senitizer: DomSanitizer, public platform: Platform) {
+  constructor(
+    private ytService: YoutubeService, private change: ChangeDetectorRef, private http: HTTP, private senitizer: DomSanitizer,
+    public platform: Platform) {
     // loadjs('https://apps.elfsight.com/p/platform.js');
   }
 
@@ -75,6 +77,9 @@ export class FeedsPage implements OnInit {
   }
 
   ionViewWillLoad() {
+    if (this.current === 'instagram') {
+      this.getInstaFeeds();
+    }
     this.instagramPosts();
     // this.getYouTubeVideos();
   }
