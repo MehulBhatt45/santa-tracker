@@ -21,16 +21,6 @@
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
   <app-root></app-root>
-  <script type="text/javascript">
-    document.write(unescape("%3Cscript src='" + "//panel.mightycall.com/CallbackWidget/js/MightyCallCBW_1.0.js' type='text/javascript'%3E%3C/script%3E"));
-    document.write(unescape("%3Cscript src='" + "//mightycallstorage.blob.core.windows.net/cbw/658960de-a625-4ae2-9957-e7b425e2b350__widget.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-    InitCallbackWidget();
-    // setTimeout(() => {
-    //   document.getElementById('MightyCallCBW-658960de-a625-4ae2-9957-e7b425e2b350').style.setProperty('display', 'none', 'important');
-    // }, 1500)
-  </script>
   <script>
     var spread_shop_config = {
       shopName: 'santa-tracker-online-store',
@@ -38,7 +28,14 @@
       prefix: 'https://shop.spreadshirt.com',
       baseId: 'myShop'
     };
-  </script>
+    </script>
+    <script type="text/javascript">
+      document.write(unescape("%3Cscript src='https://panel.mightycall.com/CallbackWidget/js/MightyCallCBW_1.0.js' type='text/javascript'%3E%3C/script%3E"));
+      document.write(unescape("%3Cscript src='https://mightycallstorage.blob.core.windows.net/cbw/658960de-a625-4ae2-9957-e7b425e2b350__widget.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      InitCallbackWidget();
+    </script>
   <!-- <script type="text/javascript" src="assets/plugins.min.js"></script> -->
 </body>
 

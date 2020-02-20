@@ -74,12 +74,10 @@ export class FeedsPage implements OnInit {
 
   ngOnInit() {
     console.log('Loaded');
+    this.getInstaFeeds();
   }
 
   ionViewWillLoad() {
-    if (this.current === 'instagram') {
-      this.getInstaFeeds();
-    }
     this.instagramPosts();
     // this.getYouTubeVideos();
   }
