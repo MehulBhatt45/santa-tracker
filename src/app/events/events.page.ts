@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { environment } from 'src/environments/environment';
 import { YoutubeService } from '../services/youtube.service';
@@ -20,7 +20,8 @@ export class EventsPage implements OnInit {
     private iab: InAppBrowser,
     private dateFilter: DatePipe,
     private truncate: TruncatePipe,
-    private senitizer: DomSanitizer) {
+    private senitizer: DomSanitizer,
+    private change: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -42,6 +43,7 @@ export class EventsPage implements OnInit {
         await this.getMetaData(ev.links.dates, i);
       });
       console.log(this.allEvents);
+      this.change.detectChanges();
     }).catch(err => {
       console.log(err);
     });
@@ -69,6 +71,7 @@ export class EventsPage implements OnInit {
         this.allEvents[index].dates = await jsonRes.data[0].attributes;
         this.allEvents[index].book_now = await jsonRes.data[0].links.book_now;
       }
+      this.change.detectChanges();
     }).catch(err => {
       console.log(err);
     });
