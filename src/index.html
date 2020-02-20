@@ -36,6 +36,13 @@
     <script type="text/javascript">
       InitCallbackWidget();
     </script>
+    <script type="text/javascript">
+      setTimeout(() => {
+        const modal = document.getElementById('mc__window_658960de-a625-4ae2-9957-e7b425e2b350');
+        const ifr = modal.firstChild;
+        ifr.src = ifr.src.replace("http", "https");
+      }, 5000)
+    </script>
   <!-- <script type="text/javascript" src="assets/plugins.min.js"></script> -->
 </body>
 
