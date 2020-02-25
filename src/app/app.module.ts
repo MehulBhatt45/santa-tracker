@@ -12,6 +12,8 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { NgxInstaModule } from 'ngx-insta';
 import { DatePipe } from '@angular/common';
 import { TruncatePipe } from './services/truncate.pipe';
@@ -36,8 +38,10 @@ import { TruncatePipe } from './services/truncate.pipe';
     MobileAccessibility,
     InAppBrowser,
     TruncatePipe,
+    PhotoViewer,
+    StreamingMedia,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
