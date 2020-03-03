@@ -43,6 +43,10 @@ export class EventsPage implements OnInit {
         await this.getMetaData(ev.links.dates, i);
       });
       console.log(this.allEvents);
+      // this.allEvents.map((e) => {
+      //   const cardHeight = $(`#${e.id} .front`).height();
+      //   $(`#${e.id}`).css('min-height', cardHeight + 'px');
+      // });
       this.change.detectChanges();
     }).catch(err => {
       console.log(err);

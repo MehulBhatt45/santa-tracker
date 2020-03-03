@@ -25,9 +25,8 @@
 
 /* flip speed goes here */
 .flipper {
-  transition: 0.6s;
+  transition: all 0.6s;
   transform-style: preserve-3d;
-
   position: relative;
 }
 
@@ -39,7 +38,7 @@
   justify-content: center;
   backface-visibility: hidden;
   margin: 0;
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
 }
@@ -54,4 +53,13 @@
 /* back, initially hidden pane */
 .back {
   transform: rotateY(180deg);
+}
+.flip-container.flipped .front,
+.flip-container .back {
+  position: absolute;
+}
+
+.flip-container .front,
+.flip-container.flipped .back {
+  position: relative;
 }
